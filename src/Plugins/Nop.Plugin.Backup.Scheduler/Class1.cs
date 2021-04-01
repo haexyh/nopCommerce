@@ -1,9 +1,20 @@
-﻿using Nop.Services.Plugins;
-using Nop.Web.Framework.Models;
+﻿using Nop.Core;
+using Nop.Services.Plugins;
 
 namespace Nop.Plugin.Backup.Scheduler
 {
-    public class Class1 : BasePlugin    
+    public class Class1 : BasePlugin
     {
+        private readonly IWebHelper _webHelper;
+
+        public Class1(IWebHelper webHelper)
+        {
+            _webHelper = webHelper;
+        }
+
+        public override string GetConfigurationPageUrl()
+        {
+            return $"{_webHelper.GetStoreLocation()}Admin/BackupScheduler/Configure";
+        }
     }
 }
