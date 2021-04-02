@@ -1,13 +1,13 @@
-﻿using Nop.Core;
+﻿using System.Threading.Tasks;
+using Nop.Core;
 using Nop.Services.Plugins;
 
-namespace Nop.Plugin.Backup.Scheduler
+namespace Nop.Plugin.Misc.Scheduler
 {
-    public class Class1 : BasePlugin
+    public class SchedulerPlugin : BasePlugin
     {
         private readonly IWebHelper _webHelper;
-
-        public Class1(IWebHelper webHelper)
+        public SchedulerPlugin(IWebHelper webHelper)
         {
             _webHelper = webHelper;
         }
@@ -15,6 +15,11 @@ namespace Nop.Plugin.Backup.Scheduler
         public override string GetConfigurationPageUrl()
         {
             return $"{_webHelper.GetStoreLocation()}Admin/BackupScheduler/Configure";
+        }
+
+        public override Task InstallAsync()
+        {
+            return base.InstallAsync();
         }
     }
 }

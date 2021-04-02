@@ -63,6 +63,13 @@
     <Folder Include="Plugins\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Views\Configure.cshtml" />
+    <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Views\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Nop.Plugin.Backup.Scheduler.deps.json" />
+    <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Nop.Plugin.Misc.Scheduler.deps.json" />
+  </ItemGroup>
+
   <!-- This target execute after "Build" target.
     We use it to clean up folder with plugins from unnecessary and obsolete libraries. -->
   <Target Name="NopTarget" AfterTargets="Build">

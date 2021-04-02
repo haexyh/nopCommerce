@@ -1,7 +1,6 @@
-﻿using System;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Plugin.Backup.Scheduler.Models
+namespace Nop.Plugin.Misc.Scheduler.Models
 {
     public record ConfigurationModel: BaseNopModel
     {
