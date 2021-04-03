@@ -4,7 +4,7 @@
   "SystemName": "Misc.Scheduler",
   "Version": "0.01",
   "SupportedVersions": [ "4.40" ],
-  "Author": "nopCommerce team",
+  "Author": "Heaxyh",
   "DisplayOrder": 1,
   "FileName": "Nop.Plugin.Misc.Scheduler.dll",
   "Description": "Create Backups"

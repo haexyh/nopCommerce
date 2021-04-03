@@ -7,10 +7,10 @@ using Nop.Web.Framework.Mvc.Filters;
 
 namespace Nop.Plugin.Misc.Scheduler.Controllers
 {
-    [AuthorizeAdmin()]
+    [AuthorizeAdmin]
     [Area(AreaNames.Admin)]
     [AutoValidateAntiforgeryToken]
-    public class BackupSchedulerController : BasePluginController
+    public class SchedulerController : BasePluginController
     {
 
         public async Task<IActionResult> Configure()
@@ -18,7 +18,7 @@ namespace Nop.Plugin.Misc.Scheduler.Controllers
             // todo remove
             await Task.Delay(1);
             var model = new ConfigurationModel() {AdditionalFeePercentage = false, HelloTest = "hoi",};
-            return View("~/Plugins/Backup.Scheduler/Views/Configure.cshtml", model);
+            return View("~/Plugins/Misc.Scheduler/Views/Configure.cshtml", model);
         }
     }
 }
