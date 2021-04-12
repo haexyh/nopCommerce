@@ -31,13 +31,21 @@
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
   <None Remove="placeholder.png" />
-  <Content Include="placeholder.png">
+  <None Remove="logo.png" />
+  <Content Include="logo.png">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
 </ItemGroup>
   
 <ItemGroup>
   <PackageReference Include="MySQLBackupNetCore" Version="2.1.0" />
+  <PackageReference Include="RestSharp" Version="106.11.7" />
+</ItemGroup>
+  
+<ItemGroup>
+  <Reference Include="RestSharp, Version=106.3.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75">
+    <HintPath>..\Nop.Plugin.Misc.Sendinblue\RestSharp.dll</HintPath>
+  </Reference>
 </ItemGroup>
   <Target Name="FilterCopyLocalItems" AfterTargets="ResolveLockFileCopyLocalProjectDeps">
     <ItemGroup>

@@ -51,10 +51,10 @@ namespace Nop.Plugin.Misc.Scheduler.Controllers
         [HttpPost]
         public async Task<IActionResult> Configure(ConfigurationModel model)
         {
-            var file = await _backupService.CreateBackup();
             if (!ModelState.IsValid) return await Configure();
-
+            
             await updateSettings(model);
+            await _backupService.CreateBackup();
             _notificationService.SuccessNotification( await _localizationService.GetResourceAsync("Admin.Plugins.Saved"));
 
             return View("~/Plugins/Misc.Scheduler/Views/Configure.cshtml", model);
@@ -62,8 +62,10 @@ namespace Nop.Plugin.Misc.Scheduler.Controllers
 
         private async Task updateSettings(ConfigurationModel model)
         {
-            _backupSchedulerSettings.ClientSecret = model.ClientSecret;
+            _backupSchedulerSettings.ApiKey = model.ApiKey;
             _backupSchedulerSettings.ScheduleTime = model.ScheduleTime;
+            _backupSchedulerSettings.Endpoint = model.Endpoint;
+            _backupSchedulerSettings.DataProviderType = model.DataProviderType;
             await _settingService.SaveSettingAsync(_backupSchedulerSettings);
         }
     }

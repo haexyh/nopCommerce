@@ -68,6 +68,10 @@
     <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Views\_ViewImports.cshtml" />
     <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Nop.Plugin.Backup.Scheduler.deps.json" />
     <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Nop.Plugin.Misc.Scheduler.deps.json" />
+    <_ContentIncludedByDefault Remove="Plugins\Misc.Scheduler\Views\Configure.cshtml" />
+    <_ContentIncludedByDefault Remove="Plugins\Misc.Scheduler\Views\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Plugins\Misc.Scheduler\Nop.Plugin.Misc.Scheduler.deps.json" />
+    <_ContentIncludedByDefault Remove="Plugins\Misc.Scheduler\plugin.json" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target.

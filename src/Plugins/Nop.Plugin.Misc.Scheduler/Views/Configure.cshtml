@@ -3,33 +3,43 @@
 @{
     Layout = "_ConfigurePlugin";
 }
-<h1>Hello world</h1>
 
-@*@await Component.InvokeAsync("StoreScopeConfiguration")*@
+@await Component.InvokeAsync("StoreScopeConfiguration")
 
 
 <form asp-controller="Scheduler" asp-action="Configure" method="post">
     <div class="cards-group">
         <div class="card card-default">
             <div class="card-body">
+                <div class="form-group row">
+                    <label asp-for="Endpoint">@T("Plugins.Misc.Scheduler.Fields.Endpoint"):</label>
+                    <input type="text" asp-for="Endpoint"  autocomplete="off" required  />
+                    <span asp-validation-for="Endpoint"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="ApiKey">@T("Plugins.Misc.Scheduler.Fields.ApiKey"):</label>
+                    <input type="text" asp-for="ApiKey"  autocomplete="off" maxlength="40" minlength="40" required />
+                    <span asp-validation-for="ApiKey"></span>
+                </div>
+                
+                <div class="form-group row">
+                    <label asp-for="ScheduleTime">@T("Plugins.Misc.Scheduler.Fields.ScheduleTime"):</label>
+                    <input type="time" asp-for="ScheduleTime"  autocomplete="off" maxlength="22" required/>
+                    <span asp-validation-for="ScheduleTime"></span>
+                </div>
+                @* *@
+                @* <div class="form-group row"> *@
+                @*     <label asp-for="ApiKey">@T("Plugins.Misc.Scheduler.Fields.ClientSecret"):</label> *@
+                @*     <input type="text" asp-for="ApiKey" style="width:165px;" autocomplete="off" maxlength="22"/> *@
+                @*     <span asp-validation-for="ApiKey"></span> *@
+                @* </div> *@
 
-                <div class="form-group row">
-                    <label asp-for="StorageProvider">@T("Plugins.Misc.Scheduler.Fields.StorageProvider"):</label>
-                    @Html.Raw(Model.StorageProvider.ToString())
-                </div>
-                
-                <div class="form-group row">
-                    <label asp-for="ClientSecret">@T("Plugins.Misc.Scheduler.Fields.ClientSecret"):</label>
-                    <input type="text" asp-for="ClientSecret" style="width:165px;" autocomplete="off" maxlength="22"/>
-                    <span asp-validation-for="ClientSecret"></span>
-                </div>
-                
                 <div class="form-group row">
                     @* <label asp-for="ScheduleTime">@T("Plugins.Misc.Scheduler.Fields.ScheduleTime"):</label> *@
                     @* <input type="datetime" asp-for="ScheduleTime" style="width:165px;" autocomplete="off" maxlength="22"/> *@
                     @* <span asp-validation-for="ScheduleTime"></span> *@
                 </div>
-                
+
                 <div class="form-group row">
                     <div class="col-md-9 offset-md-3">
                         <button type="submit" name="save" class="btn btn-primary">@T("Admin.Common.Save")</button>

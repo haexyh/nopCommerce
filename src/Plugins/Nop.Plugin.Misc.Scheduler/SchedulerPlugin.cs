@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nop.Core;
 using Nop.Data;
@@ -37,14 +38,25 @@ namespace Nop.Plugin.Misc.Scheduler
         {
             var settings = new BackupSchedulerSettings()
             {
-                StorageProvider = StorageProvider.GoogleOne,
                 DataProviderType = DataProviderType.MySql,
                 ScheduleTime = TimeSpan.FromHours(2),
+                InstanceGuid = Guid.NewGuid(),
             };
+            
             await _settingService.SaveSettingAsync(settings);
-            // localiation
-            // await _localizationService.AddLocalResourceAsync();
+            await _localizationService.AddLocaleResourceAsync(createLocalization());
             await base.InstallAsync();
+        }
+
+        private IDictionary<string, string> createLocalization()
+        {
+            return new Dictionary<string, string>()
+            {
+                {"Plugins.Misc.Scheduler.Fields.Endpoint", "Endpoint"},
+                {"Plugins.Misc.Scheduler.Fields.ApiKey", "API Key"},
+                {"Plugins.Misc.Scheduler.Fields.ScheduleTime", "Backup time"},
+                {"Plugins.Misc.Scheduler.Fields.DataProviderType", "Database type"},
+            };
         }
 
         /// <summary>
