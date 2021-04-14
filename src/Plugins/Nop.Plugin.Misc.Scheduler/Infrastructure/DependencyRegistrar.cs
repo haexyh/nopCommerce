@@ -1,6 +1,4 @@
-﻿using System;
-using ItSuite.Rest.Aws.S3File;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Nop.Core.Configuration;
 using Nop.Core.Infrastructure;
 using Nop.Core.Infrastructure.DependencyManagement;
@@ -23,7 +21,6 @@ namespace Nop.Plugin.Misc.Scheduler.Infrastructure
         public virtual void Register(IServiceCollection services, ITypeFinder typeFinder, AppSettings appSettings)
         {
             services.AddScoped<BackupService>();
-            services.AddScoped<UploadService>();
         }
 
         /// <summary>

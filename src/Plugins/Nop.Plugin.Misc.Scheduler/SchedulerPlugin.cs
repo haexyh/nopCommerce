@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Nop.Core;
 using Nop.Data;
 using Nop.Plugin.Misc.Scheduler.Models;
+using Nop.Plugin.Misc.Scheduler.Services;
 using Nop.Services.Common;
 using Nop.Services.Configuration;
 using Nop.Services.Localization;
+using Nop.Services.Logging;
 using Nop.Services.Plugins;
+using Nop.Services.Tasks;
+using Task = System.Threading.Tasks.Task;
 
 namespace Nop.Plugin.Misc.Scheduler
 {
@@ -16,14 +19,23 @@ namespace Nop.Plugin.Misc.Scheduler
         private readonly IWebHelper _webHelper;
         private readonly ISettingService _settingService;
         private readonly ILocalizationService _localizationService;
+        private readonly IScheduleTaskService _scheduleTaskService;
+        private readonly ILogger _logger;
+        private readonly BackupService _backupService;
 
         public SchedulerPlugin(IWebHelper webHelper,
             ISettingService settingService,
-            ILocalizationService localizationService)
+            ILocalizationService localizationService,
+            IScheduleTaskService scheduleTaskService,
+            ILogger logger,
+            BackupService backupService)
         {
             _webHelper = webHelper;
             _settingService = settingService;
             _localizationService = localizationService;
+            _scheduleTaskService = scheduleTaskService;
+            _logger = logger;
+            _backupService = backupService;
         }
 
         public override string GetConfigurationPageUrl()
@@ -67,6 +79,8 @@ namespace Nop.Plugin.Misc.Scheduler
         {
             await _settingService.DeleteSettingAsync<BackupSchedulerSettings>();
             await _localizationService.DeleteLocaleResourcesAsync("Plugins.Misc.Scheduler");
+            var tasks = await _scheduleTaskService.GetTaskByTypeAsync(typeof(BackupTask).FullName);
+            if (tasks != default) await _scheduleTaskService.DeleteTaskAsync(tasks);
             await base.UninstallAsync();
         }
     }

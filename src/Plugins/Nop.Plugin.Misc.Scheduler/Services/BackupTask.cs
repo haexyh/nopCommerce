@@ -7,20 +7,23 @@ namespace Nop.Plugin.Misc.Scheduler.Services
 {
     public class BackupTask: IScheduleTask
     {
-        private readonly BackupService _backupService;
         private readonly ILogger _logger;
+        private readonly BackupService _backupService;
 
-        public BackupTask(BackupService backupService, ILogger logger)
+        public BackupTask( ILogger logger, BackupService backupService)
         {
-            _backupService = backupService;
             _logger = logger;
+            _backupService = backupService;
         }
         public async Task ExecuteAsync()
         {
+            
             try
             {
-                await _backupService.CreateBackup();
-                await _logger.InformationAsync("Backup Successfuly created");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n\n\n\n\n\nHello");
+                Console.ResetColor();
+                await _backupService.CreateBackupAsync();
             }
             catch (Exception e)
             {

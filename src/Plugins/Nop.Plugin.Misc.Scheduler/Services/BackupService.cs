@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
-using ItSuite.Rest.Aws.S3File;
-using MailKit.Security;
 using MySql.Data.MySqlClient;
 using MySQLBackupNetCore;
 using Nop.Core.Domain.Logging;
 using Nop.Data;
 using Nop.Services.Logging;
+using RestSharp;
 
 namespace Nop.Plugin.Misc.Scheduler.Services
 {
@@ -19,7 +16,6 @@ namespace Nop.Plugin.Misc.Scheduler.Services
     {
         private readonly ILogger _logger;
         private readonly BackupSchedulerSettings _backupSchedulerSettings;
-        private readonly S3FileClient _s3FileClient;
 
         private const string CHARSET = "charset";
         private const string CONVERT_TO_ZERO_DATE_TIME = "convertzerodatetime";
@@ -28,43 +24,57 @@ namespace Nop.Plugin.Misc.Scheduler.Services
         {
             _logger = logger;
             _backupSchedulerSettings = backupSchedulerSettings;
-            _s3FileClient = new S3FileClient(_backupSchedulerSettings.Endpoint, _backupSchedulerSettings.ApiKey,
-                _backupSchedulerSettings.InstanceGuid);
         }
 
-        public async Task CreateBackup()
+        public async Task CreateBackupAsync()
         {
             try
             {
-                var baseFilename = $"{DateTime.Now:yyyyMMddhhmmss}_Backup";
-
+                using var s3Service = new S3Service(_backupSchedulerSettings.Endpoint, _backupSchedulerSettings.ApiKey, _backupSchedulerSettings.InstanceGuid);
                 var settings = await DataSettingsManager.LoadSettingsAsync();
                 var fullConnectionString =
                     createExtendedConnectionString(settings.ConnectionString, settings.DataProvider);
-
-                await using var connection = new MySqlConnection(fullConnectionString);
-                await using var command = new MySqlCommand();
-                using var mySqlBackup = new MySqlBackup(command);
-
-                command.Connection = connection;
-                await connection.OpenAsync();
-
-                await using (var memoryStream = new MemoryStream())
-                {
-                    using var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true);
-                    var fileInArchive = archive.CreateEntry($"{baseFilename}.sql", CompressionLevel.Optimal);
-                    await using (var entryStream = fileInArchive.Open())
-                        mySqlBackup.ExportToStream(entryStream);
-                    
-                   var response =  await _s3FileClient.UploadZip($"{baseFilename}.zip", memoryStream);
-                }
-
-                await connection.CloseAsync();
+                var tempFileNameWithoutExtension = await createBackup(fullConnectionString);
+                var tempZipArchive = await createZipArchive(tempFileNameWithoutExtension);
+                var bytes = await File.ReadAllBytesAsync(tempZipArchive);
+                var response = await s3Service.UploadZip($"{DateTime.Now:yyyyMMddhhmmss}_Backup.zip", bytes);
+                await clear(response, tempZipArchive);
             }
             catch (Exception e)
             {
-                await _logger.ErrorAsync(nameof(CreateBackup), e);
+                await _logger.ErrorAsync(nameof(CreateBackupAsync), e);
             }
+        }
+
+        private async Task clear(IRestResponse response, string tempZipArchive)
+        {
+            var message = string.IsNullOrWhiteSpace(response.ErrorMessage) ? "Successful" : response.ErrorMessage;
+            await _logger.InsertLogAsync(response.IsSuccessful ? LogLevel.Information : LogLevel.Fatal, message);
+            if (response.IsSuccessful && File.Exists(tempZipArchive)) File.Delete(tempZipArchive);
+        }
+
+        private async Task<string> createBackup(string connectionString)
+        {
+            var path = Path.GetTempPath();
+            var baseFilename = $"{DateTime.Now:hmmss}_dev";
+            var fullPath = $"{path}/{baseFilename}";
+
+            await using var connection = new MySqlConnection(connectionString);
+            await using var command = new MySqlCommand();
+            using var mySqlBackup = new MySqlBackup(command);
+            command.Connection = connection;
+            await connection.OpenAsync();
+            mySqlBackup.ExportToFile($"{fullPath}.sql");
+            await connection.CloseAsync();
+            return fullPath;
+        }
+
+        private async Task<string> createZipArchive(string filePath)
+        {
+            await using var createFileStream = new FileStream($"{filePath}.zip", FileMode.Create);
+            using var zipArchive = new ZipArchive(createFileStream, ZipArchiveMode.Create);
+            zipArchive.CreateEntryFromFile($"{filePath}.sql", $"{DateTime.Now:yyMMddhhmmss}.sql");
+            return $"{filePath}.zip";
         }
 
         private string createExtendedConnectionString(string connectionString, DataProviderType dataProviderType) =>
@@ -76,11 +86,8 @@ namespace Nop.Plugin.Misc.Scheduler.Services
 
         private string createMySqlConnectionString(string connectionString)
         {
-            // todo better
             if (!connectionString.EndsWith(';')) connectionString += ';';
-
             var properties = splitConnectionString(connectionString);
-
             if (properties.All(i => !i.StartsWith(CHARSET))) connectionString += "charset=utf8;";
 
             if (properties.SingleOrDefault(i => i.StartsWith(CONVERT_TO_ZERO_DATE_TIME))?.EndsWith("true") == true)
