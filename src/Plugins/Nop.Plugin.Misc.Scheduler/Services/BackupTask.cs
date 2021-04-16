@@ -20,9 +20,12 @@ namespace Nop.Plugin.Misc.Scheduler.Services
             
             try
             {
+                #if DEBUG
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine("\n\n\n\n\n\nHello");
+                Console.WriteLine("\n\n\nHello");
                 Console.ResetColor();
+                #endif
+                
                 await _backupService.CreateBackupAsync();
             }
             catch (Exception e)

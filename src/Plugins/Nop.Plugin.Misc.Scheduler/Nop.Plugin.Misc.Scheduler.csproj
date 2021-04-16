@@ -3,36 +3,40 @@
   <TargetFramework>net5.0</TargetFramework>
   <Copyright>Copyright by it-suite.ch</Copyright>
   <Company>it-suite.ch</Company>
-  <Authors>Heaxyh</Authors>
-  <PackageLicenseUrl>http://it-suite.ch</PackageLicenseUrl>
-  <PackageProjectUrl>http://it-suite.ch</PackageProjectUrl>
-  <RepositoryUrl>http://github.com/haexyh/nopCommerce</RepositoryUrl>
+  <Authors>Pascal Klaiss</Authors>
+  <PackageLicenseUrl>https://it-suite.ch</PackageLicenseUrl>
+  <PackageProjectUrl>https://it-suite.ch</PackageProjectUrl>
+  <RepositoryUrl></RepositoryUrl>
   <RepositoryType>Git</RepositoryType>
   <OutputPath>..\..\Presentation\Nop.Web\Plugins\Misc.Scheduler</OutputPath>
   <OutDir>$(OutputPath)</OutDir>
-  <!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your    project. You need to set this parameter to true if your plugin has a nuget package to ensure that   the dlls copied from the NuGet cache to the output of your project-->
+  <!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your
+      project. You need to set this parameter to true if your plugin has a nuget package to ensure that   
+      the dlls copied from the NuGet cache to the output of your project-->
   <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-  <AssemblyName>Nop.Plugin.Misc.Scheduler</AssemblyName>
-  <RootNamespace>Nop.Plugin.Misc.Scheduler</RootNamespace>
+  
+<!--  <AssemblyName>Nop.Plugin.Misc.Scheduler</AssemblyName>-->
+<!--  <RootNamespace>Nop.Plugin.Misc.Scheduler</RootNamespace>-->
 </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="logo.png" />
+    <None Remove="plugin.json" />
+    <None Remove="Views\Configure.cshtml" />
+  </ItemGroup>
+  
+  
 <ItemGroup>
-  <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
-  <ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
-</ItemGroup>
-<ItemGroup>
-  <Content Include="Views\Configure.cshtml">
-    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-  </Content>
-  <Content Include="Views\_ViewImports.cshtml">
+  <Content Include="logo.png">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
-  <None Remove="plugin.json" />
   <Content Include="plugin.json">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
-  <None Remove="placeholder.png" />
-  <None Remove="logo.png" />
-  <Content Include="logo.png">
+  <Content Include="Views\Configure.cshtml">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </Content>
+  <Content Include="Views\_ViewImports.cshtml">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
 </ItemGroup>
@@ -41,16 +45,22 @@
   <PackageReference Include="MySQLBackupNetCore" Version="2.1.0" />
   <PackageReference Include="RestSharp" Version="106.11.7" />
 </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
+    <ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
+  </ItemGroup>
   
-  <Target Name="FilterCopyLocalItems" AfterTargets="ResolveLockFileCopyLocalProjectDeps">
-    <ItemGroup>
-      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" Condition="'%(Filename)' != 'MySQLBackupNetCore' AND '%(Filename)' != 'RestSharp' " />
-    </ItemGroup>
-  </Target>
+<!--  <Target Name="FilterCopyLocalItems" AfterTargets="ResolveLockFileCopyLocalProjectDeps">-->
+<!--    <ItemGroup>-->
+<!--      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" Condition="'%(Filename)' != 'MySQLBackupNetCore' AND '%(Filename)' != 'RestSharp' " />-->
+<!--    </ItemGroup>-->
+<!--  </Target>-->
   
 <!-- This target execute after "Build" target -->
 <Target Name="NopTarget" AfterTargets="Build">
   <!-- Delete unnecessary libraries from plugins path -->
   <MSBuild Projects="@(ClearPluginAssemblies)" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
 </Target>
+  
 </Project>
