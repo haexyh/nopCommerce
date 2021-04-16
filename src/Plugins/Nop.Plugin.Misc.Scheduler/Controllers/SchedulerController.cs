@@ -13,7 +13,6 @@ using Nop.Services.Tasks;
 using Nop.Web.Framework;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc.Filters;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
 using Task = System.Threading.Tasks.Task;
 
 namespace Nop.Plugin.Misc.Scheduler.Controllers
