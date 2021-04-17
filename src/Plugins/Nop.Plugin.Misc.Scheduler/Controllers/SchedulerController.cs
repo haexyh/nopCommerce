@@ -6,7 +6,6 @@ using Nop.Plugin.Misc.Scheduler.Models;
 using Nop.Plugin.Misc.Scheduler.Services;
 using Nop.Services.Configuration;
 using Nop.Services.Localization;
-using Nop.Services.Logging;
 using Nop.Services.Messages;
 using Nop.Services.Security;
 using Nop.Services.Tasks;
@@ -27,27 +26,21 @@ namespace Nop.Plugin.Misc.Scheduler.Controllers
         private readonly ISettingService _settingService;
         private readonly INotificationService _notificationService;
         private readonly ILocalizationService _localizationService;
-        private readonly BackupService _backupService;
         private readonly IScheduleTaskService _scheduleTaskService;
-        private readonly ILogger _logger;
 
         public SchedulerController(BackupSchedulerSettings backupSchedulerSettings,
             IPermissionService permissionService,
             ISettingService settingService,
             INotificationService notificationService,
             ILocalizationService localizationService,
-            BackupService backupService,
-            IScheduleTaskService scheduleTaskService,
-            ILogger logger)
+            IScheduleTaskService scheduleTaskService )
         {
             _backupSchedulerSettings = backupSchedulerSettings;
             _permissionService = permissionService;
             _settingService = settingService;
             _notificationService = notificationService;
             _localizationService = localizationService;
-            _backupService = backupService;
             _scheduleTaskService = scheduleTaskService;
-            _logger = logger;
         }
 
         public async Task<IActionResult> Configure()

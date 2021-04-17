@@ -3,6 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
+using ItSuite.Rest.Aws.S3File;
 using MySql.Data.MySqlClient;
 using MySQLBackupNetCore;
 using Nop.Core.Domain.Logging;
@@ -30,7 +31,7 @@ namespace Nop.Plugin.Misc.Scheduler.Services
         {
             try
             {
-                using var s3Service = new S3Service(_backupSchedulerSettings.Endpoint, _backupSchedulerSettings.ApiKey, _backupSchedulerSettings.InstanceGuid);
+                using var s3Service = new S3FileClient(_backupSchedulerSettings.Endpoint, _backupSchedulerSettings.ApiKey, _backupSchedulerSettings.InstanceGuid);
                 var settings = await DataSettingsManager.LoadSettingsAsync();
                 var fullConnectionString =
                     createExtendedConnectionString(settings.ConnectionString, settings.DataProvider);
