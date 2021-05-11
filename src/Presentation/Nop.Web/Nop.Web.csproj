@@ -33,6 +33,7 @@
 
     <Compile Remove="Plugins\**;Themes\**" />
     <Content Remove="Plugins\**;Themes\**" />
+    <Content Include="Themes\DefaultClean\Content\images\00_Logo_kolumbus-parts_original.png" />
     <EmbeddedResource Remove="Plugins\**;Themes\**" />
     <None Remove="Plugins\**;Themes\**" />
 
