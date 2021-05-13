@@ -20,6 +20,9 @@ namespace Nop.Plugin.Misc.Scheduler.Models
         
         [NopResourceDisplayName("Plugins.Misc.Scheduler.Fields.DataProviderType")]
         public DataProviderType DataProviderType { get; set; }
+        
+        [NopResourceDisplayName("Plugins.Misc.Scheduler.Fields.HostName")]
+        public string HostName { get; set; }
 
         public static ConfigurationModel FromSettings(BackupSchedulerSettings settings)
         {
@@ -28,7 +31,8 @@ namespace Nop.Plugin.Misc.Scheduler.Models
                 DataProviderType = settings.DataProviderType,
                 Endpoint = settings.Endpoint,
                 ApiKey = settings.ApiKey,
-                ScheduleTime = settings.ScheduleTime
+                ScheduleTime = settings.ScheduleTime,
+                HostName = settings.HostName
             };
         }
     }

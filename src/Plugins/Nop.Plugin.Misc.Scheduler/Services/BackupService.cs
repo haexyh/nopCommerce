@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using ItSuite.Rest.Aws.S3File;
 using MySql.Data.MySqlClient;
@@ -9,7 +10,6 @@ using MySQLBackupNetCore;
 using Nop.Core.Domain.Logging;
 using Nop.Data;
 using Nop.Services.Logging;
-using RestSharp;
 
 namespace Nop.Plugin.Misc.Scheduler.Services
 {
@@ -31,7 +31,8 @@ namespace Nop.Plugin.Misc.Scheduler.Services
         {
             try
             {
-                using var s3Service = new S3FileClient(_backupSchedulerSettings.Endpoint, _backupSchedulerSettings.ApiKey, _backupSchedulerSettings.InstanceGuid);
+                var config = new S3FileClientConfig(_backupSchedulerSettings.ApiKey, _backupSchedulerSettings.Endpoint, _backupSchedulerSettings.HostName);
+                using var s3Service = new S3FileClient(config);
                 var settings = await DataSettingsManager.LoadSettingsAsync();
                 var fullConnectionString =
                     createExtendedConnectionString(settings.ConnectionString, settings.DataProvider);
@@ -47,11 +48,11 @@ namespace Nop.Plugin.Misc.Scheduler.Services
             }
         }
 
-        private async Task clear(IRestResponse response, string tempZipArchive)
+        private async Task clear(HttpResponseMessage response, string tempZipArchive)
         {
-            var message = string.IsNullOrWhiteSpace(response.ErrorMessage) ? "Successful" : response.ErrorMessage;
-            await _logger.InsertLogAsync(response.IsSuccessful ? LogLevel.Information : LogLevel.Fatal, message);
-            if (response.IsSuccessful && File.Exists(tempZipArchive)) File.Delete(tempZipArchive);
+            var message = response.IsSuccessStatusCode ? "Successful" : response.ReasonPhrase;
+            await _logger.InsertLogAsync(response.IsSuccessStatusCode ? LogLevel.Information : LogLevel.Fatal, message);
+            if (response.IsSuccessStatusCode && File.Exists(tempZipArchive)) File.Delete(tempZipArchive);
         }
 
         private async Task<string> createBackup(string connectionString)

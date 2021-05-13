@@ -90,6 +90,7 @@ namespace Nop.Plugin.Misc.Scheduler.Controllers
             _backupSchedulerSettings.ScheduleTime = model.ScheduleTime;
             _backupSchedulerSettings.Endpoint = model.Endpoint;
             _backupSchedulerSettings.DataProviderType = model.DataProviderType;
+            _backupSchedulerSettings.HostName = model.HostName;
             await _settingService.SaveSettingAsync(_backupSchedulerSettings);
         }
     }

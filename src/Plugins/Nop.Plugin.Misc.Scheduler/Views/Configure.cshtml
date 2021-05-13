@@ -21,6 +21,11 @@
                     <input type="text" asp-for="ApiKey"  autocomplete="off" maxlength="40" minlength="40" required />
                     <span asp-validation-for="ApiKey"></span>
                 </div>
+                <div class="form-group row">
+                    <label asp-for="HostName">@T("Plugins.Misc.Scheduler.Fields.HostName"):</label>
+                    <input type="text" asp-for="HostName"  autocomplete="off"  required />
+                    <span asp-validation-for="HostName"></span>
+                </div>
                 
                 <div class="form-group row">
                     <label asp-for="ScheduleTime">@T("Plugins.Misc.Scheduler.Fields.ScheduleTime"):</label>

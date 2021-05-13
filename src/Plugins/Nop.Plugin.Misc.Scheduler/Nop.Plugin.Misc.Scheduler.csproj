@@ -42,12 +42,12 @@
 </ItemGroup>
   
 <ItemGroup>
+  <PackageReference Include="It-Suite.Rest.Aws" Version="1.0.2" />
   <PackageReference Include="MySQLBackupNetCore" Version="2.1.0" />
   <PackageReference Include="RestSharp" Version="106.11.7" />
 </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\ItSuite.Rest.Aws\ItSuite.Rest.Aws\ItSuite.Rest.Aws.csproj" />
     <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
     <ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
   </ItemGroup>

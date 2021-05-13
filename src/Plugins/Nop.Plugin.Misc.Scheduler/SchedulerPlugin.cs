@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Nop.Core;
 using Nop.Data;
-using Nop.Plugin.Misc.Scheduler.Models;
 using Nop.Plugin.Misc.Scheduler.Services;
 using Nop.Services.Common;
 using Nop.Services.Configuration;
@@ -52,7 +51,6 @@ namespace Nop.Plugin.Misc.Scheduler
             {
                 DataProviderType = DataProviderType.MySql,
                 ScheduleTime = TimeSpan.FromHours(2),
-                InstanceGuid = Guid.NewGuid(),
             };
             
             await _settingService.SaveSettingAsync(settings);
@@ -68,6 +66,7 @@ namespace Nop.Plugin.Misc.Scheduler
                 {"Plugins.Misc.Scheduler.Fields.ApiKey", "API Key"},
                 {"Plugins.Misc.Scheduler.Fields.ScheduleTime", "Backup time"},
                 {"Plugins.Misc.Scheduler.Fields.DataProviderType", "Database type"},
+                {"Plugins.Misc.Scheduler.Fields.HostName", "Hostname (ohne prefix/suffix)"},
             };
         }
 
