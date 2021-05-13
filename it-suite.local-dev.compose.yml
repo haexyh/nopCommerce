@@ -17,6 +17,9 @@ services:
       - nopcommerce_database
     image: adminer
     restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: nopcommerce_database
+      ADMINER_DESIGN: dracula
     ports:
       - 8080:8080
 volumes:
