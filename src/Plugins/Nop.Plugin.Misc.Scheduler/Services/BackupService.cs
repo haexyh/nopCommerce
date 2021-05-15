@@ -17,29 +17,33 @@ namespace Nop.Plugin.Misc.Scheduler.Services
     {
         private readonly ILogger _logger;
         private readonly BackupSchedulerSettings _backupSchedulerSettings;
+        private readonly IHttpClientFactory _httpClientFactory;
+        
 
         private const string CHARSET = "charset";
         private const string CONVERT_TO_ZERO_DATE_TIME = "convertzerodatetime";
 
-        public BackupService(ILogger logger, BackupSchedulerSettings backupSchedulerSettings)
+        public BackupService(ILogger logger, BackupSchedulerSettings backupSchedulerSettings, IHttpClientFactory httpClientFactory)
         {
             _logger = logger;
             _backupSchedulerSettings = backupSchedulerSettings;
+            _httpClientFactory = httpClientFactory;
         }
+        
 
         public async Task CreateBackupAsync()
         {
             try
             {
-                var config = new S3FileClientConfig(_backupSchedulerSettings.ApiKey, _backupSchedulerSettings.Endpoint, _backupSchedulerSettings.HostName);
-                using var s3Service = new S3FileClient(config);
+                var config =  new S3FileClientConfig(_backupSchedulerSettings.ApiKey, _backupSchedulerSettings.Endpoint, _backupSchedulerSettings.HostName);
+                using var s3FileClient = new S3FileClient(_httpClientFactory.CreateClient(), config);
                 var settings = await DataSettingsManager.LoadSettingsAsync();
                 var fullConnectionString =
                     createExtendedConnectionString(settings.ConnectionString, settings.DataProvider);
                 var tempFileNameWithoutExtension = await createBackup(fullConnectionString);
                 var tempZipArchive = await createZipArchive(tempFileNameWithoutExtension);
                 var bytes = await File.ReadAllBytesAsync(tempZipArchive);
-                var response = await s3Service.UploadZip($"{DateTime.Now:yyyyMMddhhmmss}_Backup.zip", bytes);
+                var response = await s3FileClient.UploadZip($"{DateTime.Now:yyyyMMddhhmmss}_Backup.zip", bytes);
                 await clear(response, tempZipArchive);
             }
             catch (Exception e)
