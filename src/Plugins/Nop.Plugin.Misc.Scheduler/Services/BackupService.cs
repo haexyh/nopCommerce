@@ -36,7 +36,7 @@ namespace Nop.Plugin.Misc.Scheduler.Services
             try
             {
                 var config =  new S3FileClientConfig(_backupSchedulerSettings.ApiKey, _backupSchedulerSettings.Endpoint, _backupSchedulerSettings.HostName);
-                using var s3FileClient = new S3FileClient(_httpClientFactory.CreateClient(), config);
+                using var s3FileClient = new S3FileClient(_httpClientFactory, config);
                 var settings = await DataSettingsManager.LoadSettingsAsync();
                 var fullConnectionString =
                     createExtendedConnectionString(settings.ConnectionString, settings.DataProvider);

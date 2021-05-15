@@ -2,7 +2,7 @@
   "Group": "Misc",
   "FriendlyName": "it-suite.ch Backup Scheduler",
   "SystemName": "Misc.Scheduler",
-  "Version": "1.04",
+  "Version": "1.05",
   "SupportedVersions": [ "4.40" ],
   "Author": "Pascal Klaiss",
   "DisplayOrder": 1,
