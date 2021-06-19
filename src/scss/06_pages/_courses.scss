@@ -1,0 +1,20 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+#s3-1 {
+  @include h.sc-boxed;
+  padding: 100px 0;
+  h3 {
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: left;
+  }
+  .fc3 {
+    align-items: flex-start;
+    padding: 50px 0 0;
+  }
+  img {
+    margin-top: 25px;
+    width: 100%;
+  }
+}

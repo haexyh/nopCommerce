@@ -1,3 +1,4 @@
+/*********** CSS RESET **********/
 * {
   margin: 0;
   padding: 0;
@@ -61,11 +62,7 @@ script {
   display: none !important;
 }
 
-/*$primary-dark: rgb(255, 180, 162);
-$secondary: rgb(176, 149, 127);
-$secondary-complementary: rgb(255, 255, 255);
-$secondary-complementary-hoover: rgb(241, 241, 241);*/
-/*@use '../01_helpers/fonts';*/
+/*********** GLOBAL STYLES **********/
 body {
   max-width: 100%;
   overflow-x: hidden;
@@ -261,6 +258,7 @@ label, label + * {
   display: none;
 }
 
+/*********** GLOBAL FORMS ***********/
 .fieldset, .section {
   position: relative;
   margin: 0 0 40px;
@@ -393,6 +391,7 @@ label, label + * {
   height: auto;
 }
 
+/*********** GLOBAL TABLES ***********/
 .table-wrapper {
   overflow-x: auto;
 }
@@ -572,6 +571,7 @@ label, label + * {
   margin: 10px 0 0;
 }
 
+/*********** NOTIFICATIONS & POPUPS  ***********/
 .bar-notification-container {
   position: fixed;
   top: 0;
@@ -790,7 +790,7 @@ label, label + * {
   height: auto;
   border: 2px solid #ccc;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
-  background-color: #fafafa;
+  background-color: rgb(250, 250, 250);
   padding: 20px 0 0;
   text-align: center;
 }
@@ -4506,9 +4506,9 @@ label, label + * {
   overflow-y: auto;
   max-height: 200px;
   background: #FFF no-repeat;
-  background-image: -webkit-radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), -webkit-radial-gradient(50% 100%, farthest-side, #f2f2f2, rgba(0, 0, 0, 0));
-  background-image: -moz-radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), -moz-radial-gradient(50% 100%, farthest-side, #f2f2f2, rgba(0, 0, 0, 0));
-  background-image: radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, #f2f2f2, rgba(0, 0, 0, 0));
+  background-image: -webkit-radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), -webkit-radial-gradient(50% 100%, farthest-side, rgba(242, 242, 242, 1), rgba(0, 0, 0, 0));
+  background-image: -moz-radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), -moz-radial-gradient(50% 100%, farthest-side, rgba(242, 242, 242, 1), rgba(0, 0, 0, 0));
+  background-image: radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(242, 242, 242, 1), rgba(0, 0, 0, 0));
   background-position: 0 0, 0 100%;
   background-size: 100% 7px;
 }
@@ -8492,4 +8492,4 @@ pre {
   }
 }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=styles_original.css.map */

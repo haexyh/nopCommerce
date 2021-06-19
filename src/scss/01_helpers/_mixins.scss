@@ -1,0 +1,47 @@
+@use 'variables' as v;
+
+// Breakpoints
+@mixin breakpoint($device) {
+  @if $device == phone {
+    @media (max-width: map-get(v.$map: v.$breakpoints, $key: "phone" )) {
+      @content;
+    }
+  } @else if $device == tablet {
+    @media (min-width: map-get(v.$map: v.$breakpoints, $key: "tablet" )) {
+      @content;
+    }
+  } @else if $device == desktop {
+    @media (min-width: map-get(v.$map: v.$breakpoints, $key: "desktop" )) {
+      @content;
+    }
+  } @else if $device == uhd {
+    @media (min-width: map-get(v.$map: v.$breakpoints, $key: "uhd" )) {
+      @content;
+    }
+  }
+}
+
+@mixin sc-boxed {
+  width: map-get($map: v.$width-boxed, $key: "phone");
+  margin: 0 auto;
+  @include breakpoint(tablet) {
+    width: map-get($map: v.$width-boxed, $key: "tablet");
+  }
+  @include breakpoint(desktop) {
+    width: map-get($map: v.$width-boxed, $key: "desktop");
+  }
+  @include breakpoint(uhd) {
+    width: map-get($map: v.$width-boxed, $key: "uhd");
+  }
+}
+
+@mixin sh-bg-overlay-img {
+  content: "";
+  background: url(/assets/img/202_hero_bgr_overlay.png) left no-repeat;
+  height: 100%;
+  width: 100%;
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}

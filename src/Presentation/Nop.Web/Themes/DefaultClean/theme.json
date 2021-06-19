@@ -1,7 +1,7 @@
 ﻿{
   "SystemName": "DefaultClean",
-  "FriendlyName": "Default clean",
-  "SupportRTL": true,
+  "FriendlyName": "it-suite",
+  "SupportRTL": false,
   "PreviewImageUrl": "~/Themes/DefaultClean/preview.jpg",
   "PreviewText": "The 'DefaultClean' site theme"
 }

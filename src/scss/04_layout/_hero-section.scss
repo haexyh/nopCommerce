@@ -1,0 +1,133 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+@use 'sass:math';
+
+.sh {
+  position: relative;
+  .sc {
+    @include h.sc-boxed;
+    position: relative;
+    z-index: 1;
+    padding-top: 50px;
+  }
+  h1 {
+    color: color.$secondary-complementary;
+  }
+  p {
+    color: color.$secondary-complementary;
+  }
+}
+.hero-content {
+  width: 75%;
+  @include h.breakpoint(tablet) {
+    width: 80%;
+  }
+  .ce {
+    width: auto;
+    @include h.breakpoint(tablet) {
+      width: 80%;
+    }
+  }
+}
+
+#sh-1 {
+  background: url(/assets/img/10_heroBackground.jpg) no-repeat top fixed;
+  background-size: cover;
+  @include h.breakpoint(tablet) {
+    background: url(/assets/img/10_heroBackground_1025px.jpg) no-repeat top
+      fixed;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.356);
+    height: 100%;
+    width: 100%;
+  }
+
+  .ce {
+    @include h.breakpoint(tablet) {
+      width: 100%;
+    }
+  }
+
+  .hero-testimonial-wrapper {
+    flex-direction: row;
+    margin-top: 100px;
+    @include h.breakpoint(tablet) {
+      flex-flow: row nowrap;
+    }
+
+    img {
+      width: 100px;
+      position: relative;
+      top: -80px;
+    }
+    @include h.breakpoint(desktop) {
+      width: 100%;
+      justify-content: end;
+      margin-right: -120px;
+
+      img {
+        width: 150px;
+        margin-top: -250px;
+      }
+    }
+  }
+
+  .hero-testimonial {
+    color: color.$secondary;
+    background-color: color.$primary;
+    padding: 30px 20px 40px;
+    @include h.breakpoint(desktop) {
+      padding: 50px 50px 60px;
+    }
+
+    q {
+      font-weight: bold;
+      font-style: italic;
+      color: color.$headings;
+    }
+    p {
+      color: color.$secondary;
+    }
+  }
+}
+
+#sh-2 {
+  background-image: url(/assets/img/201_hero_bg.jpg);
+  @include h.breakpoint(tablet) {
+    background: url(/assets/img/201_hero_bg_1025px.jpg) right;
+  }
+  height: 450px;
+
+  &::before {
+    @include h.sh-bg-overlay-img;
+  }
+}
+
+#sh-3 {
+  background-image: url(/assets/img/30_hero_bg.jpg);
+  @include h.breakpoint(tablet) {
+    background: url(/assets/img/30_hero_bg_1025px.jpg) right;
+  }
+
+  height: 450px;
+
+  &::before {
+    @include h.sh-bg-overlay-img;
+  }
+}
+#sh-4 {
+  background: url(/assets/img/40_hero_bg.jpg);
+  @include h.breakpoint(tablet) {
+    background: url(/assets/img/40_hero_bg_1025px.jpg) right;
+  }
+  height: 450px;
+
+  &::before {
+    @include h.sh-bg-overlay-img;
+  }
+}

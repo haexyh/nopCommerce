@@ -1,0 +1,37 @@
+@use '../01_helpers' as h;
+@use 'colors' as color;
+
+.btn {
+  display: inline-block;
+  color: color.$secondary-complementary;
+  background-color: color.$primary-dark;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  @include h.breakpoint(tablet) {
+    padding: 10px 50px;
+  }
+  margin-top: 20px;
+  border: none;
+}
+
+.btn2 {
+  font-weight: 700;
+  display: inline-block;
+  color: color.$primary-dark;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+
+  &:hover {
+    color: color.$secondary;
+  }
+}
+
+.btn3 {
+  color: color.$headings;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}

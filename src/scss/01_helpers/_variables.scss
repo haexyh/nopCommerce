@@ -1,0 +1,15 @@
+@use "sass:map";
+
+$width-boxed: (
+  "phone": 90%,
+  "tablet": 80%,
+  "desktop": 60%,
+  "uhd": 60%,
+);
+
+$breakpoints: (
+  "phone": 599px,
+  "tablet": 600px,
+  "desktop": 1025px,
+  "uhd": 1921px,
+);

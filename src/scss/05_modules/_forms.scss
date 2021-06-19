@@ -1,0 +1,28 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+form[name="Contact Form"] {
+  padding: 50px 0 0 0;
+  input {
+    width: 100%;
+  }
+  > input[type="email"],
+  textarea {
+    width: 100%;
+    resize: none;
+  }
+  input,
+  textarea {
+    padding: 5px;
+    margin-bottom: 30px;
+  }
+  .field-half {
+    width: 50%;
+    padding-right: 5px;
+  }
+  .field-half-wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+  }
+}

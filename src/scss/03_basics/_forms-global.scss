@@ -1,0 +1,131 @@
+@use 'colors' as color;
+//@use '../03_basics/typography' as font;
+
+.fieldset, .section {
+  position: relative;
+  margin: 0 0 40px;
+}
+
+.fieldset .title,
+.section .title {
+  margin: 0 0 15px;
+  padding: 0 10px;
+  font-size: 20px;
+  color: color.$headings;
+}
+
+.fieldset .title strong,
+.section .title strong {
+  font-weight: normal;
+}
+
+.form-fields {
+  position: relative;
+  border-top: 1px solid #e6e6e6;
+  background-color: #f9f9f9;
+  padding: 30px 15px;
+}
+
+.inputs {
+  position: relative;
+  margin: 0 0 15px;
+  text-align: center;
+  white-space: nowrap; /*fix for 'required' elements*/
+  font-size: 0;
+}
+
+.inputs:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.inputs label {
+  display: block;
+  width: 100%;
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 14px; /*reset zeroing*/
+  color: color.$headings;
+}
+
+.inputs input[type="text"],
+.inputs input[type="email"],
+.inputs input[type="tel"],
+.inputs input[type="password"],
+.inputs select, .inputs textarea {
+  width: 400px;
+  max-width: 100%;
+  background-color: color.$primary;
+}
+
+.inputs.custom-attributes {
+  white-space: normal;
+}
+
+.inputs .option-list {
+  display: inline-block;
+  max-width: 95%;
+  vertical-align: middle;
+}
+
+.inputs .option-list li {
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid #ddd;
+  background-color: color.$primary;
+  padding: 8px 10px;
+}
+
+.inputs .option-list label {
+  display: inline-block;
+  width: auto !important;
+  margin: 0 0 0 5px;
+}
+
+.inputs.reversed {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.required {
+  margin: 0 -8px 0 3px; /*siblings offset*/
+  vertical-align: top;
+  font-size: 20px;
+  font-weight: normal;
+  color: #e4434b;
+}
+
+.message-error,
+.field-validation-error,
+.username-not-available-status,
+.poll-vote-error, .password-error {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: #e4434b;
+  margin-top: 5px;
+}
+
+.field-validation-valid,
+.username-available-status {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: #4cb17c;
+}
+
+.captcha-box {
+  text-align: center;
+  line-height: 0; /*firefox line-height bug fix*/
+}
+
+.captcha-box > div {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.captcha-box input {
+  height: auto;
+}
+

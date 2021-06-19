@@ -1,0 +1,63 @@
+@use "sass:math";
+@use '../01_helpers' as h;
+
+@for $i from 1 through 6 {
+  .fc#{$i} {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@for $i from 1 through 6 {
+  .fc#{$i} .ce {
+    width: 100%;
+  }
+}
+
+@include h.breakpoint(tablet) {
+  @for $i from 1 through 6 {
+    .fc#{$i} {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    .fc#{$i} .ce {
+      width: 50%;
+    }
+  }
+
+  @for $i from 3 through 5 {
+    .fc#{$i} > .ce {
+      padding: 0 10px;
+    }
+  }
+}
+
+@include h.breakpoint(desktop) {
+  @for $i from 1 through 6 {
+    .fc#{$i} {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    .fc#{$i} > .ce {
+      width: math.div(100%, $i);
+    }
+  }
+
+  @for $i from 3 through 5 {
+    .fc#{$i} > .ce {
+      padding: 0 10px;
+    }
+  }
+}

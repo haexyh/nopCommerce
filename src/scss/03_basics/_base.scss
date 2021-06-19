@@ -1,0 +1,197 @@
+//@use '../01_helpers' as h;
+@use 'colors' as color;
+@use '../03_basics/typography' as font;
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: color.$primary;
+  font: normal 14px font.$main;
+  color: color.$font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: color.$headings;
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+}
+
+a img {
+  opacity: 0.99; /*firefox scale bug fix*/
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea, select {
+  height: 36px; /*safari padding fix*/
+  border: 1px solid color.$borders;
+  padding: 8px;
+  vertical-align: middle;
+}
+
+input, textarea, select, button {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: color.$font;
+}
+
+textarea {
+  min-height: 150px;
+}
+
+select {
+  min-width: 50px;
+  height: 32px; /*safari padding fix*/
+  padding: 6px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #ccc;
+  color: color.$headings;
+  position: relative;
+  z-index: 1;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input[type="checkbox"] + *,
+input[type="radio"] + * {
+  vertical-align: middle;
+}
+
+input[type="button"], input[type="submit"],
+button, .button-1, .button-2 {
+  cursor: pointer;
+}
+
+label, label + * {
+  vertical-align: middle;
+}
+
+.master-wrapper-content {
+  position: relative;
+  z-index: 0;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.master-column-wrapper {
+  position: relative;
+  z-index: 0;
+}
+
+.master-column-wrapper:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.center-1 {
+  margin: 0 0 100px;
+}
+
+.center-2, .side-2 {
+  margin: 0 0 50px;
+}
+
+.side-2:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.page {
+  min-height: 200px;
+  text-align: center;
+}
+
+.page-title {
+  min-height: 50px;
+  margin: 0 0 25px;
+  border-bottom: 1px solid color.$borders;
+  padding: 6px 10px;
+}
+
+.page-title h1 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.page:after,
+.page-title:after,
+.page-body:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.center-1 .page-title,
+.center-1 .title {
+  text-align: center;
+}
+
+.buttons {
+  margin: 0 0 30px;
+}
+
+.link-rss {
+  display: none;
+  width: 24px;
+  height: 24px;
+  background: url('../images/rss.png') center no-repeat;
+  font-size: 0 !important;
+}
+
+.category-description ul,
+.manufacturer-description ul,
+.full-description ul,
+.topic-block ul,
+.topic-page ul,
+.post-body ul {
+  margin: 12px 0;
+  padding: 0 0 0 36px;
+  list-style: disc;
+}
+
+.category-description ol,
+.manufacturer-description ol,
+.full-description ol,
+.topic-block ol,
+.topic-page ol,
+.post-body ol {
+  margin: 12px 0;
+  padding: 0 0 0 36px;
+  list-style: decimal;
+}
+
+.category-description p,
+.manufacturer-description p,
+.full-description p,
+.topic-block p,
+.topic-page p,
+.post-body p,
+.news-body p {
+  margin: 10px 0;
+  text-align: justify;
+}
+
+.flyout-cart {
+  display: none;
+}
+
+

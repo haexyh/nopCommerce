@@ -1,0 +1,61 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+footer {
+  @media (max-width: map-get($map: h.$breakpoints, $key: desktop)) {
+    text-align: center;
+  }
+
+  padding-bottom: 100px;
+  .fc1,
+  .fc3 {
+    @include h.sc-boxed;
+  }
+  .fc3 {
+    align-items: flex-start;
+  }
+  h4 {
+    color: color.$secondary;
+  }
+  position: relative;
+  min-height: 720px;
+  background-image: url(/assets/img/02_footer_bgr.jpg);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 100px;
+  .gg-youtube-wrapper {
+    height: 20px;
+    width: 20px;
+    padding: 5px 0 0 2px;
+  }
+  .gg-facebook,
+  .gg-twitter,
+  .gg-youtube {
+    color: color.$headings;
+  }
+  .icon-social {
+    display: inline-block;
+    background-color: color.$primary-dark;
+    border-radius: 100%;
+    padding: 10px;
+  }
+  form[name="Footer Newsletter"] input {
+    margin-bottom: 0;
+  }
+  form input[type="submit"] {
+    border: none;
+  }
+  .copyright {
+    color: color.$headings;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid color.$primary-dark;
+    text-align: center;
+    width: 100%;
+    padding: 15px 0 5px;
+  }
+  .footer-icons {
+    text-align: center;
+  }
+}

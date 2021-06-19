@@ -1,0 +1,184 @@
+/*$primary-dark: rgb(255, 180, 162);
+$secondary: rgb(176, 149, 127);
+$secondary-complementary: rgb(255, 255, 255);
+$secondary-complementary-hoover: rgb(241, 241, 241);*/
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.data-table .hidden-row {
+  height: 1px;
+  border: none;
+}
+
+.data-table tr.hidden-row th {
+  padding: 0;
+  border-top: none;
+}
+
+.data-table tr.hidden-row th > span {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+}
+
+.cart th,
+.data-table th,
+.forum-table th {
+  border-width: 1px 1px 0;
+  border-style: solid;
+  border-color: #ddd;
+  background-color: #f6f6f6;
+  padding: 10px;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+.forum-table th.replies,
+.forum-table th.views,
+.forum-table th.votes,
+.forum-table th.latest-post,
+.forum-table th.topics,
+.forum-table th.posts,
+.forum-table td.replies,
+.forum-table td.views,
+.forum-table td.votes,
+.forum-table td.latest-post,
+.forum-table td.topics,
+.forum-table td.posts {
+  display: none;
+}
+
+.forum-table td.image {
+  min-width: 0;
+}
+
+.cart td,
+.data-table td,
+.forum-table td {
+  min-width: 50px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent #ddd #ddd;
+  background-color: #fff;
+  padding: 20px;
+  color: #444;
+}
+
+.forum-table td {
+  min-width: 90px;
+  padding: 10px;
+}
+
+.cart a,
+.data-table a,
+.forum-table a {
+  font-weight: normal;
+  color: #4ab2f1;
+}
+
+.cart a:hover,
+.cart a:focus,
+.data-table a:hover,
+.data-table a:focus,
+.forum-table a:hover,
+.forum-table a:focus {
+  text-decoration: underline;
+}
+
+.cart .product,
+.data-table .product,
+.data-table .message,
+.data-table .info,
+.data-table .name {
+  min-width: 225px;
+  text-align: left;
+}
+
+.forum-table .forum-details,
+.forum-table .topic-details {
+  text-align: left;
+}
+
+.cart .product a,
+.data-table .product a,
+.data-table .info a {
+  font-weight: bold;
+  color: #444;
+}
+
+.cart .product a:hover,
+.cart .product a:focus,
+.data-table .product a:hover,
+.data-table .product a:focus,
+.data-table .info a:hover,
+.data-table .info a:focus {
+  color: #4ab2f1;
+  text-decoration: none;
+}
+
+.cart .product .edit-item {
+  margin: 10px 0 0;
+}
+
+.cart .product .edit-item a {
+  font-weight: normal;
+  color: #4ab2f1;
+}
+
+.cart .product .edit-item a:hover,
+.cart .product .edit-item a:focus {
+  text-decoration: underline;
+}
+
+.cart .remove-from-cart,
+.cart .add-to-cart,
+.data-table .select-boxes,
+.data-table .order {
+  text-align: center;
+}
+
+.cart .remove-from-cart input[type=checkbox] {
+  display: none;
+}
+
+.cart .remove-from-cart .remove-btn {
+  width: 11px;
+  height: 11px;
+  border: 0;
+  background: #ffffffab url(../images/remove.png) center no-repeat;
+}
+
+.cart td.unit-price,
+.data-table td.unit-price {
+  white-space: nowrap;
+}
+
+.cart td.quantity input {
+  width: 50px;
+  text-align: center;
+}
+
+.cart td.subtotal,
+.data-table td.total {
+  white-space: nowrap;
+  color: #444;
+}
+
+.cart td.subtotal .discount, .cart td.subtotal .discount-additional-info {
+  font-style: italic;
+  color: #4ab2f1;
+}
+
+.data-table em a {
+  font-weight: bold;
+  color: #444;
+}
+
+.data-table div.download {
+  margin: 10px 0 0;
+}
+
+/*# sourceMappingURL=tables-globals.css.map */

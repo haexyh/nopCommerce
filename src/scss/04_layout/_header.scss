@@ -1,0 +1,89 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+header {
+  position: relative;
+  color: color.$secondary-complementary-hoover;
+  margin: 0 auto;
+  z-index: 10;
+  img {
+    width: auto;
+    margin: 0;
+  }
+  i {
+    scale: 1.5;
+    margin: 5px 5px 0 0;
+  }
+
+  @include h.breakpoint(desktop) {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 65%;
+    #menu-header {
+      display: none;
+    }
+  }
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+nav {
+  font-size: 1.2em;
+  position: absolute;
+  background-color: white;
+  color: color.$secondary;
+  width: 100%;
+  height: 0px;
+  transition: height 0.3s;
+  overflow: hidden;
+
+  &.active {
+    height: 190px;
+  }
+
+  a {
+    display: block;
+
+    &:link {
+      text-transform: capitalize;
+      padding: 10px 0 10px 10px;
+    }
+    &:hover {
+      background-color: color.$primary;
+      transition: 0.5s;
+    }
+    &.active-page {
+      background-color: color.$primary;
+    }
+  }
+  @include h.breakpoint(desktop) {
+    position: initial;
+    height: auto;
+    background-color: initial;
+    color: initial;
+    text-align: center;
+    width: auto;
+
+    a {
+      color: color.$primary;
+
+      &:link {
+        padding: 0 15px;
+        display: initial;
+      }
+      &:hover {
+        background-color: initial;
+        color: white;
+        transition: 0.5s;
+      }
+      &.active-page {
+        background-color: initial;
+        color: white;
+      }
+    }
+  }
+}

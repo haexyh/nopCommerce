@@ -1,0 +1,34 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+#s4-1 {
+  .even {
+    @include h.breakpoint(phone) {
+      flex-direction: column-reverse;
+    }
+  }
+  .ce {
+    min-height: 200px;
+  }
+  padding: 50px 0;
+  @include h.sc-boxed;
+  .date-big {
+    border-bottom: none;
+  }
+  .event-information {
+    @include h.breakpoint(tablet) {
+      padding: 10px 15px 30px;
+    }
+
+    @include h.breakpoint(desktop) {
+      padding: 0px 50px 55px 30px;
+    }
+  }
+  .event-img {
+    @include h.breakpoint(phone) {
+      margin-top: 25px;
+    }
+    align-self: stretch;
+    background-size: cover;
+  }
+}
