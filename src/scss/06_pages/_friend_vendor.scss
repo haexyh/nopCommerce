@@ -1,0 +1,70 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+/*********** CONTACT & EMAIL A FRIEND & APPLY FOR VENDOR ACCOUNT ***********/
+
+
+
+.contact-page .page-title,
+.email-a-friend-page .page-title,
+.apply-vendor-page .page-title {
+  margin: 0 0 -1px;
+}
+
+.contact-page .result,
+.contact-page .message-error,
+.email-a-friend-page .result,
+.email-a-friend-page .message-error,
+.apply-vendor-page .result,
+.apply-vendor-page .message-error {
+  margin: 20px 0;
+}
+
+.contact-page .button-1,
+.email-a-friend-page .button-1,
+.apply-vendor-page .button-1 {
+  min-width: 140px;
+  border: none;
+  background-color: #4ab2f1;
+  padding: 10px 30px;
+  text-align: center;
+  font-size: 15px;
+  color: color.$primary;
+  text-transform: uppercase;
+}
+
+.contact-page .button-1:hover,
+.contact-page .button-1:focus,
+.email-a-friend-page .button-1:hover,
+.email-a-friend-page .button-1:focus,
+.apply-vendor-page .button-1:hover,
+.apply-vendor-page .button-1:focus {
+  background-color: #248ece;
+}
+
+.contact-page .topic-block,
+.email-a-friend-page .title,
+.apply-vendor-page .title {
+  margin: 25px 0;
+}
+
+.email-a-friend-page .title h2 {
+  font-weight: normal;
+  color: #4ab2f1;
+}
+
+.apply-vendor-page .terms-of-service {
+  text-align: center;
+}
+
+.apply-vendor-page .terms-of-service > * {
+  display: inline-block;
+  line-height: 32px;
+}
+
+.apply-vendor-page .terms-of-service span,
+.apply-vendor-page .terms-of-service a {
+  color: #4ab2f1;
+  cursor: pointer;
+}
+

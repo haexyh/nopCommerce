@@ -1,0 +1,539 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+/********** REGISTRATION, LOGIN, ACCOUNT PAGES  **********/
+
+.gender {
+  display: inline-block;
+}
+
+.gender span {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.gender span > * {
+  display: inline !important;
+  margin: 0 5px;
+  line-height: 32px;
+}
+
+.date-of-birth .date-picker-wrapper {
+  display: inline;
+}
+
+.date-of-birth select {
+  width: 31%; /*always single line*/
+  max-width: 126px;
+}
+
+.date-of-birth select + select {
+  margin: 0 0 0 10px;
+}
+
+.date-of-birth .select-wrapper + .select-wrapper {
+  margin: 0 0 0 10px;
+}
+
+#check-availability-button {
+  margin: 10px 0 0;
+  border: none;
+  background-color: #888;
+  padding: 10px 15px;
+  font-size: 12px;
+  color: color.$primary;
+  text-transform: uppercase;
+}
+
+#check-availability-button:hover,
+#check-availability-button:focus {
+  background-color: #999;
+}
+
+.inputs.accept-consent {
+  text-align: center;
+}
+
+.inputs.accept-consent > * {
+  display: inline-block;
+  line-height: 32px;
+}
+
+.inputs.accept-consent span,
+.inputs.accept-consent a {
+  color: #4ab2f1;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.inputs.accept-consent label {
+  width: auto;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+.registration-page .button-1,
+.registration-result-page .button-1,
+.login-page .button-1,
+.password-recovery-page .button-1,
+.email-revalidation-page .button-1,
+.account-activation-page .button-1,
+.account-page .button-1,
+.return-request-page .button-1 {
+  min-width: 140px;
+  border: none;
+  background-color: #4ab2f1;
+  padding: 10px 30px;
+  text-align: center;
+  font-size: 15px;
+  color: color.$primary;
+  text-transform: uppercase;
+}
+
+.registration-page .button-1:hover,
+.registration-page .button-1:focus,
+.registration-result-page .button-1:hover,
+.registration-result-page .button-1:focus,
+.login-page .button-1:hover,
+.login-page .button-1:focus,
+.password-recovery-page .button-1:hover,
+.password-recovery-page .button-1:focus,
+.email-revalidation-page .button-1:hover,
+.email-revalidation-page .button-1:focus,
+.account-activation-page .button-1:hover,
+.account-activation-page .button-1:focus,
+.account-page .button-1:hover,
+.account-page .button-1:focus,
+.return-request-page .button-1:hover,
+.return-request-page .button-1:focus {
+  background-color: #248ece;
+}
+
+.return-request-page h1 a {
+  color: #4ab2f1;
+}
+
+.return-request-page .return-request-file {
+  font-size: 14px;
+}
+
+.return-request-page .return-request-file .uploadedfileinput {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.registration-page .message-error,
+.login-page .message-error,
+.account-page .message-error {
+  margin: 0 0 10px;
+}
+
+.registration-result-page .result {
+  margin: 0 0 30px;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #4cb17c;
+}
+
+.customer-info-page .email-to-revalidate,
+.customer-info-page .readonly-username,
+.customer-info-page .vat-status {
+  margin: 0 5px;
+  font-size: 14px;
+}
+
+.customer-info-page .vat-status {
+  display: block;
+}
+
+.registration-page .vat-note,
+.customer-info-page .vat-note,
+.customer-info-page .email-to-revalidate-note {
+  display: block;
+  font-size: 14px;
+  margin-top: 7px;
+  white-space: normal;
+}
+
+.login-page .customer-blocks {
+  margin: 0 0 30px;
+}
+
+.login-page .title {
+  margin: 0 0 15px;
+  font-size: 20px;
+  color: color.$headings;
+}
+
+.login-page .title strong {
+  font-weight: normal;
+}
+
+.login-page .new-wrapper {
+  margin: 0 0 50px;
+}
+
+.login-page .new-wrapper .text {
+  margin: 0 0 30px;
+  border-top: 1px solid #e6e6e6;
+  background-color: #f9f9f9;
+  padding: 30px;
+  line-height: 22px;
+}
+
+.login-page .new-wrapper .topic-block {
+  margin: 0;
+}
+
+.login-page .new-wrapper .topic-block-body strong {
+  color: color.$headings;
+}
+
+.login-page .new-wrapper .button-1 {
+  margin: 0 0 5px;
+}
+
+.login-page .returning-wrapper {
+  margin: 0;
+}
+
+.login-page .returning-wrapper .form-fields {
+  overflow: hidden;
+  padding: 30px 15px 0;
+}
+
+.login-page .returning-wrapper .inputs.reversed {
+  white-space: normal;
+}
+
+.login-page .returning-wrapper .inputs.reversed * {
+  display: inline-block;
+  width: auto;
+  margin: 5px;
+  font-size: 14px; /*reset zeroing*/
+  color: color.$headings;
+}
+
+.login-page .returning-wrapper .inputs.reversed a:hover,
+.login-page .returning-wrapper .inputs.reversed a:focus {
+  color: #4ab2f1;
+}
+
+.login-page .captcha-box {
+  margin: -15px 0 20px;
+}
+
+.login-page .returning-wrapper .buttons {
+  background-color: color.$primary;
+  padding: 30px 0;
+}
+
+.external-authentication {
+  margin: 0 0 50px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.external-authentication .title {
+  margin: 0 0 15px;
+  font-size: 20px;
+  color: color.$headings;
+}
+
+.external-authentication .buttons {
+  margin: 0 0 30px;
+  border-top: 1px solid #e6e6e6;
+  padding: 30px;
+}
+
+.external-auth-errors {
+  color: #e4444c;
+}
+
+.external-auth-association {
+  color: color.$headings;
+}
+
+.external-auth-association a {
+  color: #4ab2f1;
+}
+
+.external-auth-association a:hover,
+.external-auth-association a:focus {
+  text-decoration: underline;
+}
+
+.password-recovery-page .result {
+  margin: 0 0 5px;
+  font-weight: bold;
+  color: color.$headings;
+}
+
+.password-recovery-page .tooltip {
+  margin: 0 0 25px;
+}
+
+.add-more-external-records {
+  text-align: center;
+}
+
+.add-more-external-records a {
+  color: #4ab2f1;
+}
+
+.add-more-external-records a:hover,
+.add-more-external-records a:focus {
+  text-decoration: underline;
+}
+
+.account-page .buttons {
+  text-align: center;
+}
+
+.account-page .description {
+  margin: 0 0 25px;
+  padding: 0 10px;
+}
+
+.account-page .table-wrapper {
+  margin: 0 0 30px
+}
+
+.gdpr-tools-page .result {
+  margin: 20px 0;
+  font-size: 13px;
+  color: #e4434b;
+}
+
+.gdpr-tools-page .buttons {
+  margin-top: 20px;
+}
+
+.address-list-page .info,
+.order-list-page .info {
+  margin: 0 0 10px;
+  border-top: 1px solid #e6e6e6;
+  background-color: #f9f9f9;
+  padding: 20px;
+  line-height: 26px;
+  color: color.$headings;
+}
+
+.address-list-page .info .name,
+.order-list-page .info .name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.address-list-page .button-2,
+.order-list-page .button-2 {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  border: none;
+  padding: 0 0 0 18px;
+  font-size: 12px;
+  color: color.$headings;
+}
+
+.edit-address-button {
+  background: url('../images/edit.png') left center no-repeat;
+}
+
+.delete-address-button,
+.cancel-recurring-order-button {
+  background: url('../images/remove.png') left center no-repeat;
+}
+
+.retry-recurring-order-button {
+  background: url('../images/retry.png') left center no-repeat;
+}
+
+.return-items-button {
+  background: url('../images/return.png') left center no-repeat;
+}
+
+.order-details-button {
+  background: url('../images/details.png') left center no-repeat;
+}
+
+.address-list-page .button-2:hover,
+.address-list-page .button-2:focus,
+.order-list-page .button-2:hover,
+.order-list-page .button-2:focus {
+  color: #4ab2f1;
+}
+
+.address-list-page .add-button {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.address-edit-page .page-title {
+  margin: 0 0 -1px;
+}
+
+.address-edit-page .message-error {
+  margin: 20px 0;
+}
+
+.address-edit-page .edit-address {
+  margin: 0 0 30px;
+  border-top: 1px solid #e6e6e6;
+  background-color: #f9f9f9;
+  padding: 30px 15px;
+}
+
+.recurring-payments table td {
+  white-space: nowrap;
+}
+
+.recurring-payments table td:first-child {
+  min-width: 120px;
+  white-space: normal;
+}
+
+.recurring-payments .button-2 {
+  font-size: 14px;
+}
+
+.return-request-list-page .details {
+  border-top: 1px solid #e6e6e6;
+  background-color: #f9f9f9;
+  padding: 20px;
+  line-height: 22px;
+  color: color.$headings;
+}
+
+.return-request-list-page label {
+  margin: 0 5px 0 0;
+}
+
+.return-request-list-page a {
+  color: #4ab2f1;
+}
+
+.return-request-list-page a:hover,
+.return-request-list-page a:focus {
+  text-decoration: underline;
+}
+
+.return-request-list-page .comments div {
+  margin: 10px 0 0;
+  font-size: 15px;
+  font-style: italic;
+  color: color.$headings;
+}
+
+.downloadable-products-page table td {
+  color: color.$headings;
+}
+
+.reward-points-overview {
+  margin: 0 0 25px;
+}
+
+.reward-points-history table td {
+  color: color.$headings;
+}
+
+.reward-points-history table td:first-child {
+  min-width: 120px;
+}
+
+.change-password-page .page-title {
+  margin: 0 0 -1px;
+}
+
+.change-password-page .result,
+.change-password-page .message-error {
+  margin: 20px 0;
+}
+
+.change-password-page .fieldset {
+  margin: 0 0 30px;
+}
+
+.avatar-page .page-title {
+  margin: 0;
+}
+
+.avatar-page .page-body {
+  margin: 0 0 30px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  padding: 30px 25px;
+}
+
+.avatar-page .message-error {
+  margin: 0 0 10px;
+}
+
+.avatar-page .image {
+  margin: 0 0 10px;
+}
+
+.avatar-page .image img {
+  border: 1px solid #ccc;
+}
+
+.avatar-page .button-1 {
+  font-size: 14px;
+}
+
+.avatar-page .button-2 {
+  border: none;
+  background-color: #888;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: color.$primary;
+  text-transform: uppercase;
+}
+
+.avatar-page .button-2:hover,
+.avatar-page .button-2:focus {
+  background-color: #999;
+}
+
+.avatar-page .info {
+  color: color.$headings;
+}
+
+.vendorinfo-page .button-2 {
+  border: medium none;
+  background-color: #888;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: color.$primary;
+  text-transform: uppercase;
+}
+
+.vendorinfo-page .button-2:hover,
+.vendorinfo-page .button-2:focus {
+  background-color: #999;
+}
+
+.vendorinfo-page .vendor-picture {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.vendorinfo-page .vendor-picture * {
+  display: block;
+  margin-top: 15px;
+}
+
+.check-gift-card-balance-page .page-title {
+  margin: 0 0 -1px;
+}
+
+.check-gift-card-balance-page .result,
+.check-gift-card-balance-page .message-error {
+  margin: 20px 0;
+}
+
+.check-gift-card-balance-page .fieldset {
+  margin: 0 0 30px;
+}
+
+

@@ -1,0 +1,91 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+.topic-block {
+  margin: 0 0 25px;
+}
+
+.topic-block-title {
+  min-height: 50px;
+  margin: 0 0 25px;
+  border-bottom: 1px solid color.$borders;
+  padding: 0 0 15px;
+}
+
+.topic-block-title h2 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.topic-block-body {
+  text-align: justify;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.topic-page .page-body {
+  text-align: justify;
+  line-height: 22px;
+}
+
+.topic-block a,
+.topic-page a {
+  text-decoration: underline;
+}
+
+.topic-block strong,
+.topic-page strong {
+  color: color.$headings;
+}
+
+.home-page .topic-block {
+  margin: 0 0 50px;
+}
+
+.popup-window .topic-page {
+  padding: 15px;
+}
+
+.not-found-page p {
+  margin: 30px 15px;
+}
+
+.topic-password {
+  text-align: center;
+}
+
+.enter-password-title {
+  margin: 0 0 20px;
+  color: color.$headings;
+}
+
+.enter-password-form {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.enter-password-form input[type="password"] {
+  float: left;
+  width: 200px;
+  height: 40px;
+  margin: 0 -1px 0 0;
+}
+
+.enter-password-form button[type="submit"] {
+  float: left;
+  width: auto;
+  min-width: 86px;
+  height: 40px;
+  border: none;
+  background-color: #4ab2f1;
+  padding: 0 15px;
+  color: color.$primary;
+  text-transform: uppercase;
+}
+
+.enter-password-form button[type="submit"]:hover,
+.enter-password-form button[type="submit"]:focus {
+  background-color: #248ece;
+}
+
+

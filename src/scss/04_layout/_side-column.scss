@@ -1,0 +1,211 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+.block {
+  max-width: 600px; /*width limit in mobile*/
+  min-height: 50px;
+  margin: auto;
+  text-align: left;
+}
+
+.block .title {
+  position: relative;
+  margin: 0 0 10px;
+  border-bottom: 1px solid color.$borders;
+  background: #f6f6f6 url('../images/toggle-gray.png') right 14px no-repeat;
+  padding: 12px 30px 12px 10px;
+  font-size: 20px;
+  color: color.$headings;
+  cursor: pointer;
+}
+
+.block .title strong {
+  font-weight: normal;
+}
+
+.block .listbox {
+  display: none;
+  border-bottom: 1px solid color.$borders;
+  padding: 10px 5px;
+}
+
+.block .list li {
+  padding: 5px 0 5px 15px;
+}
+
+.block .list a {
+  display: inline-block;
+  position: relative;
+  padding: 5px 0;
+  font-size: 16px;
+  color: color.$headings;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+.block .list a:before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: -15px;
+  width: 5px;
+  height: 5px;
+  background-color: color.$borders;
+}
+
+.block .list .active > a {
+  color: #4ab2f1;
+}
+
+.block .list a:hover,
+.block .list a:focus {
+  color: #4ab2f1;
+}
+
+.block a.product-picture {
+  display: none;
+}
+
+.block a.product-picture:before {
+  display: none;
+}
+
+.block .sublist {
+  margin: 15px 0 5px;
+}
+
+.block .sublist a {
+  font-size: 14px;
+}
+
+.block .view-all {
+  margin: 10px 0 0;
+}
+
+.block .view-all a {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #4ab2f1;
+}
+
+.block .view-all a:hover,
+.block .view-all a:focus {
+  text-decoration: underline;
+}
+
+.block .tags {
+  margin: 5px 0 10px;
+}
+
+.block .tags ul {
+  font-size: 0;
+}
+
+.block .tags li,
+.product-tags-all-page li {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px;
+  overflow: hidden;
+  font-size: 17px !important; /*setting base size*/
+}
+
+.block .tags li a,
+.product-tags-all-page li a {
+  float: left;
+  line-height: 30px;
+  color: color.$headings;
+}
+
+.block .tags li a:hover,
+.block .tags li a:focus,
+.product-tags-all-page li a:hover,
+.product-tags-all-page li a:focus {
+  color: #4ab2f1;
+}
+
+.poll strong {
+  display: block;
+  margin: 10px 0;
+  background-color: #f6f6f6;
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: normal;
+  color: color.$headings;
+  text-transform: uppercase;
+}
+
+.poll-options,
+.poll-results {
+  margin: 10px 0 15px;
+  overflow: hidden;
+  font-size: 15px;
+  color: color.$headings;
+}
+
+.poll-options li,
+.poll-results li {
+  margin: 10px 0;
+}
+
+.poll-options li > input {
+  margin: 0 5px 0 0;
+  cursor: pointer;
+}
+
+.poll-options li > label {
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.poll .buttons,
+.poll-total-votes {
+}
+
+.poll .buttons button {
+  border: none;
+  background-color: #aaa;
+  padding: 10px 20px;
+  font-size: 13px;
+  color: color.$primary;
+  text-transform: uppercase;
+}
+
+.poll .buttons button:hover,
+.poll .buttons button:focus {
+  background-color: #bbb;
+}
+
+.poll-total-votes {
+  display: block;
+  margin: 10px 0 0;
+  font-weight: bold;
+  font-style: italic;
+  color: color.$headings;
+}
+
+.home-page-polls {
+  text-align: center;
+}
+
+.home-page-polls .title {
+  border-bottom: 1px solid color.$borders;
+  color: color.$headings;
+  font-size: 30px;
+  font-weight: normal;
+  margin: 0 0 30px;
+  padding: 0 0 15px;
+}
+
+.home-page-polls .title strong {
+  font-weight: normal;
+}
+
+.home-page-polls li {
+  display: inline-block;
+  margin: 10px;
+}
+
+

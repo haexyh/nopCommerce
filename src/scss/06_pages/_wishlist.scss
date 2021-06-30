@@ -1,0 +1,208 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+.wishlist-page .page-title {
+  margin: 0 0 -1px;
+}
+
+.wishlist-content {
+  margin: 0 0 20px;
+}
+
+.wishlist-content .message-error {
+  margin: 20px 0;
+}
+
+.wishlist-content .table-wrapper {
+  margin: 0 0 30px;
+}
+
+.wishlist-content .product-content {
+  min-width: 300px;
+  text-align: left;
+}
+
+.wishlist-content .tax-shipping-info {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.wishlist-content .tax-shipping-info a {
+  color: #4ab3f1;
+}
+
+.wishlist-content .tax-shipping-info a:hover,
+.wishlist-content .tax-shipping-info a:focus {
+  text-decoration: underline;
+}
+
+.wishlist-content .buttons {
+  font-size: 0;
+}
+
+.wishlist-content .button-2 {
+  display: block;
+  width: 250px;
+  margin: 0 auto 3px;
+  border: none;
+  padding: 10px 25px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 15px;
+  color: color.$primary;
+}
+
+.wishlist-content .update-wishlist-button,
+.wishlist-content .wishlist-add-to-cart-button {
+  background-color: #4ab2f1;
+  text-transform: uppercase;
+}
+
+.wishlist-content .update-wishlist-button:hover,
+.wishlist-content .update-wishlist-button:focus,
+.wishlist-content .wishlist-add-to-cart-button:hover,
+.wishlist-content .wishlist-add-to-cart-button:focus {
+  background-color: #248ece;
+}
+
+.wishlist-content .email-a-friend-wishlist-button {
+  background-color: #aaa;
+}
+
+.wishlist-content .email-a-friend-wishlist-button:hover,
+.wishlist-content .email-a-friend-wishlist-button:focus {
+  background-color: #999;
+}
+
+.wishlist-page .share-info {
+  text-align: center;
+}
+
+.wishlist-page .share-info span {
+  display: block;
+  margin: 0 0 5px;
+}
+
+.wishlist-page .share-info a {
+  font-weight: bold;
+  color: color.$headings;
+}
+
+.wishlist-page .share-info a:hover,
+.wishlist-page .share-info a:focus {
+  color: #4ab2f1;
+}
+
+.wishlist-page .no-data {
+  margin: 25px 0 0;
+}
+
+.compare-products-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.compare-products-page .clear-list {
+  display: inline-block;
+  margin: 0 0 20px;
+  background-color: #4ab2f1;
+  padding: 10px 15px;
+  font-size: 12px;
+  color: color.$primary;
+  text-transform: uppercase;
+}
+
+.compare-products-page .clear-list:hover,
+.compare-products-page .clear-list:focus {
+  background-color: #248ece;
+}
+
+.compare-products-page .table-wrapper {
+  margin: 0 0 30px;
+  padding: 0 0 1px; /*IE mobile table border fix*/
+}
+
+.compare-products-table td {
+  min-width: 150px;
+  border: 1px solid color.$borders;
+  background-color: color.$primary;
+  padding: 20px;
+  text-align: left;
+  vertical-align: top;
+  color: color.$headings;
+}
+
+.compare-products-table td:first-child {
+  min-width: 0;
+}
+
+.compare-products-table td label {
+  font-weight: normal;
+  color: color.$font;
+}
+
+.compare-products-table .specification-group td {
+  border: 0;
+  padding: 20px 10px 10px 10px;
+}
+
+.compare-products-table .specification-group td label {
+  font-size: 16px;
+  color: color.$headings;
+}
+
+.compare-products-table .remove-button {
+  display: inline-block;
+  border: none;
+  background: url('../images/remove.png') left center no-repeat;
+  padding: 0 0 0 18px;
+  font-size: 12px;
+  color: #666;
+}
+
+.compare-products-table .remove-button:hover,
+.compare-products-table .remove-button:focus {
+  color: #4ab2f1;
+}
+
+.compare-products-table .picture {
+  display: block;
+  position: relative;
+  max-width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.compare-products-table .picture img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.compare-products-table .product-name td {
+  font-weight: bold;
+}
+
+.compare-products-table .product-name td a:hover,
+.compare-products-table .product-name td a:focus {
+  color: #4ab2f1;
+}
+
+.compare-products-table .short-description td {
+  line-height: 22px;
+}
+
+.compare-products-table .full-description td {
+  display: none;
+}
+
+.compare-products-page .no-data {
+  margin: 25px 0 0;
+}
+
+

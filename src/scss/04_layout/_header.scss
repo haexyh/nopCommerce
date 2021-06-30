@@ -1,89 +1,219 @@
 @use '../01_helpers' as h;
 @use '../03_basics/colors' as color;
 
-header {
+.header {
   position: relative;
-  color: color.$secondary-complementary-hoover;
-  margin: 0 auto;
   z-index: 10;
-  img {
-    width: auto;
-    margin: 0;
-  }
-  i {
-    scale: 1.5;
-    margin: 5px 5px 0 0;
-  }
+  width: 95%;
+  margin: auto;
+  text-align: center;
+}
 
-  @include h.breakpoint(desktop) {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 65%;
-    #menu-header {
-      display: none;
-    }
-  }
+.header-upper {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid color.$borders;
 }
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+
+.header-selectors-wrapper {
+  border-bottom: 1px solid color.$borders;
+  padding: 10px 0;
 }
-nav {
-  font-size: 1.2em;
-  position: absolute;
-  background-color: white;
-  color: color.$secondary;
+
+.header-selectors-wrapper > div {
+  display: block;
+  width: 50%;
+  margin: 10px auto;
+  vertical-align: middle;
+}
+
+.header-selectors-wrapper select {
   width: 100%;
-  height: 0px;
-  transition: height 0.3s;
-  overflow: hidden;
-
-  &.active {
-    height: 190px;
-  }
-
-  a {
-    display: block;
-
-    &:link {
-      text-transform: capitalize;
-      padding: 10px 0 10px 10px;
-    }
-    &:hover {
-      background-color: color.$primary;
-      transition: 0.5s;
-    }
-    &.active-page {
-      background-color: color.$primary;
-    }
-  }
-  @include h.breakpoint(desktop) {
-    position: initial;
-    height: auto;
-    background-color: initial;
-    color: initial;
-    text-align: center;
-    width: auto;
-
-    a {
-      color: color.$primary;
-
-      &:link {
-        padding: 0 15px;
-        display: initial;
-      }
-      &:hover {
-        background-color: initial;
-        color: white;
-        transition: 0.5s;
-      }
-      &.active-page {
-        background-color: initial;
-        color: white;
-      }
-    }
-  }
 }
+
+.language-list {
+  max-width: 100%;
+  font-size: 0;
+}
+
+.language-list li {
+  display: inline-block;
+  margin: 0 1px;
+  vertical-align: middle;
+}
+
+.language-list a {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 32px;
+  line-height: 0;
+}
+
+.language-list img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.header-links-wrapper {
+  position: relative;
+  padding: 20px 0;
+}
+
+.header-links {
+}
+
+.header-links ul {
+  font-size: 0;
+}
+
+.header-links li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.header-links span,
+.header-links a {
+  display: inline-block;
+  font-size: 12px; /*reset zeroing*/
+  line-height: 36px;
+  text-transform: uppercase;
+}
+
+.header-links a:hover,
+.header-links a:focus {
+  color: #4ab2f1;
+}
+
+#topcartlink {
+  display: block;
+  width: 70%;
+  max-width: 400px;
+  margin: 10px auto 0;
+  background-color: #f6f6f6;
+  padding: 0 20px;
+}
+
+#topcartlink a {
+  background: url('../images/shopping-bag.png') left center no-repeat;
+  padding: 0 0 0 20px;
+}
+
+.header-lower {
+  position: relative;
+  z-index: 0;
+  padding: 0;
+}
+
+.header-logo {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.header-logo a {
+  display: inline-block;
+  max-width: 100%;
+  line-height: 0; /*firefox line-height bug fix*/
+}
+
+.header-logo a img {
+  max-width: 100%;
+  opacity: 1;
+  max-height: 75px;
+}
+
+.search-box form {
+  display: inline-block;
+}
+
+.search-box form:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.search-box input.search-box-text {
+  float: left;
+  width: 200px;
+  height: 36px;
+  margin: 0 -1px 0 0;
+}
+
+.search-box .search-box-button {
+  float: left;
+  min-width: 86px;
+  height: 36px;
+  border: none;
+  background-color: #4ab2f1;
+  padding: 0 15px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.search-box .search-box-button:hover,
+.search-box .search-box-button:focus {
+  background-color: #248ece;
+}
+
+.search-box .ui-autocomplete-loading {
+  background: #fff url('../images/ajax-loader-small.gif') right center no-repeat;
+}
+
+.ui-helper-hidden-accessible {
+  display: none !important;
+}
+
+.ui-autocomplete {
+  width: 285px !important;
+  border: 1px solid color.$borders;
+  border-top: none;
+  overflow: hidden;
+  background-color: #fff;
+  text-align: left;
+  /*override jQuery UI styles, do not delete doubled properties*/
+  border-radius: 0;
+  padding: 0;
+  font: normal 14px Arial, Helvetica, sans-serif;
+}
+
+.ui-autocomplete li {
+  border-top: 1px solid color.$borders;
+}
+
+.ui-autocomplete li:first-child {
+  border-top: none;
+}
+
+.ui-autocomplete a {
+  display: block;
+  padding: 15px;
+  font-size: 14px;
+  /*override jQuery UI styles, do not delete doubled properties*/
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: none !important;
+  padding: 15px !important;
+  line-height: normal !important;
+  color: #777 !important;
+}
+
+.ui-autocomplete a:hover,
+.ui-autocomplete a:focus,
+.ui-autocomplete a.ui-state-focus {
+  background-color: #f6f6f6 !important;
+}
+
+.ui-autocomplete img {
+  display: none;
+  min-width: 20px;
+  margin: 0 10px 0 0;
+  vertical-align: middle;
+}
+
+

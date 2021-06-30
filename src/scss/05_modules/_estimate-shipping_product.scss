@@ -1,0 +1,42 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+.product-estimate-shipping {
+  margin-bottom: 20px;
+}
+
+.product-estimate-shipping .shipping-date {
+  margin-top: 3px;
+}
+
+.product-estimate-shipping .shipping-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: color.$headings;
+  margin-bottom: 5px;
+  justify-content: center;
+}
+
+.product-estimate-shipping .shipping-title .shipping-price {
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.product-estimate-shipping .shipping-title .shipping-loading {
+  margin-left: 5px;
+  vertical-align: middle;
+  background: url(../images/ajax-loader-small.gif) no-repeat;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.product-estimate-shipping .open-estimate-shipping-popup .arrow-down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin: 0 0 3px 6px;
+  border: solid black;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+}

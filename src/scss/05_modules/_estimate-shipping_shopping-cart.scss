@@ -1,0 +1,19 @@
+@use '../01_helpers' as h;
+@use '../03_basics/colors' as color;
+
+.shopping-cart-page .common-buttons .estimate-shipping-button {
+  display: inline-block;
+  min-width: 180px;
+  margin: 5px;
+  border: none;
+  background-color: #aaa;
+  padding: 10px 20px;
+  font-size: 15px;
+  text-align: center;
+  color: color.$primary;
+}
+
+.shopping-cart-page .common-buttons .estimate-shipping-button:hover,
+.shopping-cart-page .common-buttons .estimate-shipping-button:focus {
+  background-color: #999;
+}

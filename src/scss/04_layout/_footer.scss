@@ -1,61 +1,195 @@
 @use '../01_helpers' as h;
 @use '../03_basics/colors' as color;
 
-footer {
-  @media (max-width: map-get($map: h.$breakpoints, $key: desktop)) {
-    text-align: center;
-  }
-
-  padding-bottom: 100px;
-  .fc1,
-  .fc3 {
-    @include h.sc-boxed;
-  }
-  .fc3 {
-    align-items: flex-start;
-  }
-  h4 {
-    color: color.$secondary;
-  }
-  position: relative;
-  min-height: 720px;
-  background-image: url(/assets/img/02_footer_bgr.jpg);
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 100px;
-  .gg-youtube-wrapper {
-    height: 20px;
-    width: 20px;
-    padding: 5px 0 0 2px;
-  }
-  .gg-facebook,
-  .gg-twitter,
-  .gg-youtube {
-    color: color.$headings;
-  }
-  .icon-social {
-    display: inline-block;
-    background-color: color.$primary-dark;
-    border-radius: 100%;
-    padding: 10px;
-  }
-  form[name="Footer Newsletter"] input {
-    margin-bottom: 0;
-  }
-  form input[type="submit"] {
-    border: none;
-  }
-  .copyright {
-    color: color.$headings;
-    position: absolute;
-    bottom: 0;
-    border-top: 1px solid color.$primary-dark;
-    text-align: center;
-    width: 100%;
-    padding: 15px 0 5px;
-  }
-  .footer-icons {
-    text-align: center;
-  }
+.footer {
+  background-color: #eee;
+  text-align: center;
 }
+
+.footer-upper {
+  width: 95%;
+  margin: auto;
+  border-bottom: 1px solid color.$borders;
+  overflow: hidden;
+  padding: 40px 0;
+  font-size: 0;
+}
+
+.footer-block {
+  width: 95%;
+  margin: 1px auto;
+  text-align: left;
+  font-size: 14px; /*reset zeroing*/
+}
+
+.footer-block .title {
+  margin: 0 0 1px;
+  background: #4ab2f1 url('../images/toggle-white.png') right center no-repeat;
+  padding: 10px 15px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.footer-block .title strong {
+  font-weight: normal;
+}
+
+.footer-block .list {
+  display: none;
+  margin: 0 0 20px;
+  background-color: #fff;
+  padding: 10px 15px;
+}
+
+.footer-block .list a {
+  display: block;
+  padding: 10px 15px;
+  line-height: 20px;
+}
+
+.footer-block .list a:hover,
+.footer-block .list a:focus {
+  color: #4ab2f1;
+}
+
+.follow-us {
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+.follow-us .title {
+  margin: 0 0 10px;
+  background: none;
+  color: #444;
+  cursor: auto;
+}
+
+.follow-us .social ul {
+  margin: 0 0 30px;
+  border-bottom: 1px solid color.$borders;
+  padding: 0 0 30px;
+  font-size: 0;
+}
+
+.follow-us .social li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.follow-us .social a {
+  display: block;
+  width: 38px;
+  height: 38px;
+  background: url('../images/social-sprite.png') no-repeat;
+  font-size: 0;
+}
+
+.follow-us .social .facebook a {
+  background-position: 0 0;
+}
+
+.follow-us .social .twitter a {
+  background-position: -38px 0;
+}
+
+.follow-us .social .rss a {
+  background-position: -76px 0;
+}
+
+.follow-us .social .youtube a {
+  background-position: -114px 0;
+}
+
+.follow-us .social .google-plus a {
+  background-position: -152px 0;
+}
+
+.newsletter-email {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.newsletter-email:focus-within {
+  overflow: visible;
+}
+
+.newsletter-email input[type="email"] {
+  float: left;
+  width: 180px;
+  height: 36px;
+  margin: 0 -1px 0 0;
+}
+
+.newsletter-subscribe-button {
+  float: left;
+  height: 36px;
+  border: none;
+  background-color: #4ab2f1;
+  padding: 0 15px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.newsletter-subscribe-button:hover,
+.newsletter-subscribe-button:focus {
+  background-color: #248ece;
+}
+
+.newsletter-email .options {
+  clear: both;
+  padding: 10px 0 0;
+}
+
+.newsletter-validation,
+.newsletter-result {
+  width: 100%;
+  overflow: hidden;
+  line-height: 28px;
+}
+/*.newsletter-validation .please-wait {
+	display: none !important; 
+}*/
+
+.footer-lower {
+  width: 95%;
+  margin: auto;
+  overflow: hidden;
+  padding: 25px 0;
+  font-size: 12px;
+}
+
+.footer-tax-shipping a {
+  font-weight: bold;
+  color: #4ab2f1;
+}
+
+.footer-tax-shipping a:hover,
+.footer-tax-shipping a:focus {
+  text-decoration: underline;
+}
+
+.footer-powered-by {
+  margin: 10px 0 0;
+}
+
+.footer-powered-by a {
+  font-weight: bold;
+  color: #4ab2f1;
+}
+
+.footer-powered-by a:hover,
+.footer-powered-by a:focus {
+  text-decoration: underline;
+}
+
+.theme-selector {
+  margin: 10px 0 0;
+}
+
+.theme-selector select {
+  width: 170px;
+}
+
+

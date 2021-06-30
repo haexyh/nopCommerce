@@ -1,0 +1,28 @@
+.admin-header-links {
+  background-color: #333;
+  text-align: center;
+  color: #eee;
+}
+
+.admin-header-links * {
+  display: inline-block;
+  margin: 0 10px;
+  line-height: 35px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.admin-header-links .impersonate {
+  display: inline-block;
+}
+
+.admin-header-links .impersonate a {
+  background-color: #555;
+  padding: 0 15px;
+}
+
+.admin-header-links .impersonate a:hover,
+.admin-header-links .impersonate a:focus {
+  background-color: #666;
+}
+
