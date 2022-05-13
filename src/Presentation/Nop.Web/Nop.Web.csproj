@@ -35,8 +35,6 @@
     <Content Remove="Plugins\**;Themes\**" />
     <EmbeddedResource Remove="Plugins\**;Themes\**" />
     <None Remove="Plugins\**;Themes\**" />
-
-    <Content Include="Plugins\bin\placeholder.txt" CopyToPublishDirectory="PreserveNewest" />
     <None Include="Plugins\**" CopyToPublishDirectory="PreserveNewest" Exclude="Plugins\**\runtimes\**;Plugins\**\ref\**;Plugins\**\*.pdb" />
 
     <Content Include="Themes\**" CopyToPublishDirectory="PreserveNewest" Exclude="Themes\**\*.config;Themes\**\*.cshtml;Themes\**\*.json" />
@@ -61,6 +59,17 @@
 
   <ItemGroup>
     <Folder Include="Plugins\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Views\Configure.cshtml" />
+    <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Views\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Nop.Plugin.Backup.Scheduler.deps.json" />
+    <_ContentIncludedByDefault Remove="Plugins\Nop-Plugin.Backup.Scheduler\Nop.Plugin.Misc.Scheduler.deps.json" />
+    <_ContentIncludedByDefault Remove="Plugins\Misc.Scheduler\Views\Configure.cshtml" />
+    <_ContentIncludedByDefault Remove="Plugins\Misc.Scheduler\Views\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Plugins\Misc.Scheduler\Nop.Plugin.Misc.Scheduler.deps.json" />
+    <_ContentIncludedByDefault Remove="Plugins\Misc.Scheduler\plugin.json" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target.
